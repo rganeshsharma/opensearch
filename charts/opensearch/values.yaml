@@ -221,7 +221,7 @@ persistence:
   #   set, choosing the default provisioner.  (gp2 on AWS, standard on
   #   GKE, AWS & OpenStack)
   #
-  storageClass: "ceph-block"
+  storageClass: "ceph-block" # any other storage class
   accessModes:
     - ReadWriteOnce
   size: 30Gi
@@ -247,7 +247,6 @@ extraInitContainers: []
   #   command: ['do', 'something']
 
 # This is the PriorityClass settings as defined in
-# https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/#priorityclass
 priorityClassName: ""
 
 # By default this will make sure two pods don't end up on the same node
@@ -260,20 +259,17 @@ antiAffinityTopologyKey: "kubernetes.io/hostname"
 antiAffinity: "soft"
 
 # Allows passing in custom anti-affinity settings as defined in
-# https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#types-of-inter-pod-affinity-and-anti-affinity
 # Using this parameter requires setting antiAffinity to custom.
 customAntiAffinity: {}
 
 # This is the node affinity settings as defined in
-# https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#node-affinity-beta-feature
+
 nodeAffinity: {}
 
 # This is the pod affinity settings as defined in
-# https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#types-of-inter-pod-affinity-and-anti-affinity
 podAffinity: {}
 
 # This is the pod topology spread constraints
-# https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/
 topologySpreadConstraints: []
 
 # The default is to deploy all pods serially. By setting this to parallel all pods are started at
